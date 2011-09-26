@@ -14,14 +14,16 @@ class ButtonDown extends MovieClip { public function new() { super(); } }
 class Clippy {
   // Main
   static function main() {
-    var text:String = flash.Lib.current.loaderInfo.parameters.text;
+    var text:String         = flash.Lib.current.loaderInfo.parameters.text;
+    var labelText:String    = flash.Lib.current.loaderInfo.parameters.labelText;
+    var copiedText:String   = flash.Lib.current.loaderInfo.parameters.copiedText;
 
     // label
 
     var label:TextField = new TextField();
     var format:TextFormat = new TextFormat("Arial", 10);
 
-    label.text = "copy to clipboard";
+    label.text = labelText;
     label.setTextFormat(format);
     label.textColor = 0x888888;
     label.selectable = false;
@@ -41,7 +43,7 @@ class Clippy {
 
     button.addEventListener(MouseEvent.MOUSE_UP, function(e:MouseEvent) {
       flash.system.System.setClipboard(text);
-      label.text = "copied!";
+      label.text = copiedText;
       label.setTextFormat(format);
     });
 
@@ -51,7 +53,7 @@ class Clippy {
 
     button.addEventListener(MouseEvent.MOUSE_OUT, function(e:MouseEvent) {
       label.visible = false;
-      label.text = "copy to clipboard";
+      label.text = labelText;
       label.setTextFormat(format);
     });
 
