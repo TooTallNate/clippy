@@ -21,7 +21,7 @@ class Clippy {
     button.downState = flash.Lib.attach("ButtonDown");
     button.hitTestState = flash.Lib.attach("ButtonDown");
 
-    button.addEventListener(MouseEvent.MOUSE_UP, function(e:MouseEvent) {
+    button.addEventListener(MouseEvent.MOUSE_DOWN, function(e:MouseEvent) {
       flash.system.System.setClipboard(text);
     });
 
