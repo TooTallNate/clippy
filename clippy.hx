@@ -1,6 +1,7 @@
 import flash.display.MovieClip;
 import flash.events.MouseEvent;
 import flash.display.SimpleButton;
+import flash.external.ExternalInterface;
 
 class ButtonUp extends MovieClip { public function new() { super(); } }
 
@@ -9,9 +10,11 @@ class ButtonOver extends MovieClip { public function new() { super(); } }
 class ButtonDown extends MovieClip { public function new() { super(); } }
 
 class Clippy {
+
   // Main
   static function main() {
-    var text:String = flash.Lib.current.loaderInfo.parameters.text;
+    var defaultText:String = flash.Lib.current.loaderInfo.parameters.text;
+    var selector:String = flash.Lib.current.loaderInfo.parameters.selector;
 
     // button
     var button:SimpleButton = new SimpleButton();
@@ -22,7 +25,12 @@ class Clippy {
     button.hitTestState = flash.Lib.attach("ButtonDown");
 
     button.addEventListener(MouseEvent.MOUSE_DOWN, function(e:MouseEvent) {
-      flash.system.System.setClipboard(text);
+      var t = defaultText;
+      try {
+        var q = "function () { return jQuery('"+selector+"').attr('data-clippy'); }";
+        t = ExternalInterface.call(q);
+      } catch (e : Dynamic) {}
+      flash.system.System.setClipboard(t);
     });
 
     flash.Lib.current.addChild(button);
