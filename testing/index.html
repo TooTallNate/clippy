@@ -8,6 +8,7 @@
 
   <body id="index" onload="">
     <div id="text" data-clippy="blah blah blah"></div>
+    <input type="text" value="nate test" />
     foo
     <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
             width="30"
@@ -17,7 +18,7 @@
       <param name="allowScriptAccess" value="always" />
       <param name="quality" value="high" />
       <param name="scale" value="noscale" />
-      <param name="FlashVars" value="text=clipboard+text&selector=#text" />
+      <param name="FlashVars" value="text=clipboard+text&selector=input" />
       <param name="bgcolor" value="white" />
       <embed src="./../build/clippy.swf"
              width="30"
@@ -27,7 +28,7 @@
              allowScriptAccess="always"
              type="application/x-shockwave-flash"
              pluginspage="http://www.macromedia.com/go/getflashplayer"
-             FlashVars="text=clipboard+text&selector=#text"
+             FlashVars="text=clipboard+text&selector=input"
              bgcolor="white" />
     </object>
     bar

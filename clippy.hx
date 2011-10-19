@@ -27,7 +27,7 @@ class Clippy {
     button.addEventListener(MouseEvent.MOUSE_DOWN, function(e:MouseEvent) {
       var t = defaultText;
       try {
-        var q = "function () { return jQuery('"+selector+"').attr('data-clippy'); }";
+        var q = "function () { var e = jQuery('"+selector+"'); return e.attr('data-clippy') || e.val(); }";
         t = ExternalInterface.call(q);
       } catch (e : Dynamic) {}
       flash.system.System.setClipboard(t);
